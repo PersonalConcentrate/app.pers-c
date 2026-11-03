@@ -7,7 +7,8 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Электрика под ключ в Новосибирске">
 <meta property="og:description" content="Квартиры и частные дома. От 1 200 ₽ за м², договор и гарантия 2 года. Заявка в Telegram.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23FFC21A'/%3E%3Cpath d='M17.3 5 7 18h8.4l-1.3 9L25 14h-8.4l.7-9z' fill='%230B1222'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23FFC21A'/%3E%3Cg fill='%230B1222' transform='translate%283.4 2.4%29 rotate%2845 32 32%29'%3E%3Ccircle cx='17.6' cy='32' r='13.2'/%3E%3Crect x='27.8' y='28.2' width='24.8' height='7.6' rx='2'/%3E%3Crect x='40.2' y='33.8' width='5.0' height='9.0' rx='1.4'/%3E%3Crect x='47.0' y='33.8' width='4.4' height='6.8' rx='1.4'/%3E%3C/g%3E%3Cpath transform='translate%2814.72 13.72%29 scale%280.875%29' d='M13 2 3 14h9l-1 8 10-12h-9l1-8z' fill='%23FFC21A'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Электрика под ключ в Новосибирске</title>
 <meta name="description" content="Электромонтаж под ключ в квартирах и частных домах. Новосибирск и область. От 1 200 ₽ за м², договор и гарантия 2 года.">
@@ -70,9 +71,12 @@ p { margin: 0; }
 .top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: rgba(7, 12, 25, 0.96); border-bottom: 1px solid var(--line); }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 72px; }
 .brand { display: flex; align-items: center; gap: 12px; color: var(--fg); text-decoration: none; }
-.brand-mark { width: 38px; height: 38px; border-radius: 12px; background: var(--accent); display: grid; place-items: center; box-shadow: 0 0 24px rgba(255, 194, 26, 0.4); flex-shrink: 0; }
-.brand-name { font-family: var(--font-display); font-weight: 700; font-size: 15px; letter-spacing: -0.01em; line-height: 1.15; }
-.brand small { display: block; font-family: var(--font-body); font-weight: 600; font-size: 12px; color: var(--muted); letter-spacing: 0; }
+/* Logo: key with a bolt in the bow ("электрика под ключ"); on hover the key turns */
+.brand-mark { display: block; width: 40px; height: 40px; flex-shrink: 0; border-radius: 11px; box-shadow: 0 0 24px rgba(255, 194, 26, 0.35); }
+.brand-mark .key { transform-box: view-box; transform-origin: 32px 32px; transition: transform .5s cubic-bezier(.34, 1.56, .64, 1); }
+@media (hover: hover) { .brand:hover .brand-mark .key { transform: rotate(-22deg); } }
+.brand-name { font-family: var(--font-display); font-weight: 800; font-size: 14px; line-height: 1.08; letter-spacing: 0.03em; text-transform: uppercase; }
+.brand-name span { display: block; color: var(--accent); }
 .nav { display: flex; gap: 28px; }
 .nav a { color: var(--muted); text-decoration: none; font-weight: 700; font-size: 15px; position: relative; padding-block: 6px; }
 .nav a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
@@ -296,7 +300,8 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 /* Footer */
 .foot { background: var(--bg); border-top: 1px solid var(--line); }
 .foot .wrap { padding-block: 36px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px 40px; color: var(--muted); font-size: 15px; }
-.foot .cols { display: flex; flex-wrap: wrap; gap: 10px 32px; }
+.foot .cols { display: flex; flex-wrap: wrap; gap: 10px 32px; align-self: flex-end; }
+.foot-id { display: flex; flex-direction: column; gap: 12px; }
 .foot a { color: var(--fg); }
 
 /* Reveal: everything is visible at rest; blocks rise in only when they first scroll into view */
@@ -371,8 +376,8 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Электрика под ключ — в начало страницы">
-      <span class="brand-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="#0B1222"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"></path></svg></span>
-      <span class="brand-name">Электрика под ключ<small>Новосибирск и область</small></span>
+      <svg class="brand-mark" width="40" height="40" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="18" fill="#FFC21A"/><g class="key"><g fill="#0B1222" transform="translate(3.4 2.4) rotate(45 32 32)"><circle cx="17.6" cy="32" r="13.2"/><rect x="27.8" y="28.2" width="24.8" height="7.6" rx="2"/><rect x="40.2" y="33.8" width="5.0" height="9.0" rx="1.4"/><rect x="47.0" y="33.8" width="4.4" height="6.8" rx="1.4"/></g><path transform="translate(14.72 13.72) scale(0.875)" d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" fill="#FFC21A"/></g></svg>
+      <span class="brand-name">Электрика<span>под ключ</span></span>
     </a>
     <nav class="nav" aria-label="Разделы">
       <a href="#uslugi">Услуги</a>
@@ -698,7 +703,10 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 
 <footer class="foot">
   <div class="wrap">
-    <p>Электрика под ключ · Новосибирск и область</p>
+    <div class="foot-id">
+      <a class="brand" href="#top" aria-label="Электрика под ключ — наверх"><svg class="brand-mark" width="40" height="40" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="18" fill="#FFC21A"/><g class="key"><g fill="#0B1222" transform="translate(3.4 2.4) rotate(45 32 32)"><circle cx="17.6" cy="32" r="13.2"/><rect x="27.8" y="28.2" width="24.8" height="7.6" rx="2"/><rect x="40.2" y="33.8" width="5.0" height="9.0" rx="1.4"/><rect x="47.0" y="33.8" width="4.4" height="6.8" rx="1.4"/></g><path transform="translate(14.72 13.72) scale(0.875)" d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" fill="#FFC21A"/></g></svg><span class="brand-name">Электрика<span>под ключ</span></span></a>
+      <p>Новосибирск и область</p>
+    </div>
     <div class="cols">
       <p>Ежедневно 9:00–21:00</p>
       <p>Telegram: <a href="https://t.me/PersonalConcentrate" target="_blank" rel="noopener">@PersonalConcentrate</a></p>
