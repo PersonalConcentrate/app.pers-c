@@ -104,7 +104,7 @@ p { margin: 0; }
 
 /* Hero visual: a private house drawn as a blueprint; the wiring powers it up.
    Intro is CSS (draw-on + fades, off under reduced motion); current pulses and the spark run on SMIL. */
-.house-wrap { position: relative; min-width: 0; justify-self: start; width: calc(100% + clamp(0px, calc((100vw - 1232px) / 2), 120px)); }
+.house-wrap { position: relative; min-width: 0; justify-self: stretch; width: 100%; }
 .house-stage { transform: perspective(1400px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); }
 .hs { display: block; width: 100%; height: auto; overflow: visible; }
 .hs .g { stroke: #8FB5FF; stroke-opacity: .08; stroke-width: 1; fill: none; }
