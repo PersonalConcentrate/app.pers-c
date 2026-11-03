@@ -51,6 +51,7 @@ p { margin: 0; }
 .section-head { display: flex; flex-direction: column; gap: 16px; max-width: 780px; }
 .section-head h2 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 48px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
 .section-head p { color: var(--muted); font-size: 18px; max-width: 62ch; }
+.section-head .eyebrow { color: var(--accent); font-size: 13px; }
 
 /* Buttons */
 .btn { box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 0 26px; border-radius: 16px; font: 700 17px/1 var(--font-body); text-decoration: none; cursor: pointer; border: 0; transition: transform .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .18s ease; }
@@ -349,6 +350,44 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
   @keyframes bpfade { from { opacity: 0; } }
 }
 
+/* Works: real photos from our sites + full-screen viewer */
+.works { background: radial-gradient(45% 60% at 88% 12%, rgba(255, 194, 26, 0.09), rgba(255, 194, 26, 0) 70%), var(--bg); }
+.schema { border-top: 1px solid var(--line); }
+.works-strip { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+.work { min-width: 0; }
+.work-btn { position: relative; display: block; width: 100%; aspect-ratio: 9 / 16; padding: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--surface); cursor: zoom-in; color: inherit; font: inherit; }
+.work-btn img { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
+.work-btn:hover img { transform: scale(1.045); }
+.work-btn:hover { border-color: rgba(255, 194, 26, 0.5); }
+.work-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 56px 16px 16px; display: flex; flex-direction: column; gap: 4px; text-align: left; background: linear-gradient(180deg, rgba(7, 12, 25, 0), rgba(7, 12, 25, 0.9) 58%); }
+.work-cap b { font-family: var(--font-display); font-size: 16px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; color: var(--fg); }
+.work-cap span { font-size: 14px; line-height: 1.4; color: #C7D0E4; }
+.lb { width: 100vw; height: 100vh; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: var(--fg); overflow: hidden; }
+.lb::backdrop { background: rgba(4, 7, 15, 0.93); }
+.lb[open] { display: grid; place-items: center; }
+.lb-fig { margin: 0; padding: 60px 84px 22px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 100%; }
+.lb-img { display: block; width: auto; height: auto; max-width: min(100%, 1080px); max-height: calc(100vh - 150px); max-height: calc(100dvh - 150px); border-radius: 14px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5); }
+.lb-cap { display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center; font-size: 15px; color: #C7D0E4; max-width: 60ch; }
+.lb-cap b { font-family: var(--font-display); font-weight: 700; color: var(--fg); }
+.lb-close, .lb-nav { position: fixed; display: grid; place-items: center; width: 50px; height: 50px; padding: 0; border-radius: 50%; border: 1px solid var(--line-strong); background: rgba(16, 26, 57, 0.85); color: var(--fg); font: 400 28px/1 var(--font-body); cursor: pointer; transition: border-color .18s ease, color .18s ease; }
+.lb-close { top: 18px; right: 18px; }
+.lb-prev { left: 18px; top: calc(50% - 25px); }
+.lb-next { right: 18px; top: calc(50% - 25px); }
+.lb-close:hover, .lb-nav:hover { border-color: var(--accent); color: var(--accent); }
+body.lb-open { overflow: hidden; }
+@media (max-width: 1100px) {
+  .works-strip { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 31%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 14px; scrollbar-width: thin; scrollbar-color: rgba(255, 194, 26, 0.5) transparent; }
+  .work { scroll-snap-align: start; }
+}
+@media (max-width: 720px) {
+  .works-strip { grid-auto-columns: 72%; gap: 12px; margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter); }
+  .lb-fig { padding: 70px 12px 84px; }
+  .lb-img { max-height: calc(100vh - 230px); max-height: calc(100dvh - 230px); }
+  .lb-prev, .lb-next { top: auto; bottom: 18px; }
+  .lb-prev { left: calc(50% - 62px); }
+  .lb-next { right: calc(50% - 62px); }
+}
+
 .mbar { display: none; }
 
 @media (max-width: 1100px) {
@@ -421,6 +460,7 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
     </a>
     <nav class="nav" aria-label="Разделы">
       <a href="#uslugi">Услуги</a>
+      <a href="#raboty">Работы</a>
       <a href="#shema">Схема</a>
       <a href="#kak">Как работаем</a>
       <a href="#raschet">Расчёт</a>
@@ -746,6 +786,55 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
   </div>
 </section>
 
+<section class="band works" id="raboty">
+  <div class="wrap">
+    <div class="section-head rv">
+      <p class="eyebrow">Наши объекты</p>
+      <h2>Живые фото наших работ</h2>
+      <p>Без фотобанков: щиты и монтаж, которые бригада сделала сама. Нажмите на фото, чтобы рассмотреть детали.</p>
+    </div>
+    <ul class="works-strip" role="list">
+      <li class="work rv" style="--i:0">
+        <button class="work-btn" type="button" data-full="photos/shchit-3f-1080.webp" data-w="1080" data-h="1920" aria-label="Открыть фото: Трёхфазный щит">
+          <img src="photos/shchit-3f-560.webp" width="560" height="996" loading="lazy" decoding="async" alt="Собранный трёхфазный щит: вводной автомат, три реле напряжения, три дифавтомата и два ряда автоматов на группы">
+          <span class="work-cap"><b>Трёхфазный щит</b><span>Реле напряжения на каждую фазу, 3 дифавтомата и 27 групп</span></span>
+        </button>
+      </li>
+      <li class="work rv" style="--i:1">
+        <button class="work-btn" type="button" data-full="photos/shchit-rele-1080.webp" data-w="1080" data-h="1920" aria-label="Открыть фото: Щит с реле напряжения">
+          <img src="photos/shchit-rele-560.webp" width="560" height="996" loading="lazy" decoding="async" alt="Зелёный щит в стене: дифавтомат, реле напряжения и 15 автоматов, кабели заходят по штробам">
+          <span class="work-cap"><b>Щит с реле напряжения</b><span>Дифавтомат 30 мА, реле напряжения и 15 групп</span></span>
+        </button>
+      </li>
+      <li class="work rv" style="--i:2">
+        <button class="work-btn" type="button" data-full="photos/sborka-1080.webp" data-w="1080" data-h="1440" aria-label="Открыть фото: Сборка щита">
+          <img src="photos/sborka-560.webp" width="560" height="747" loading="lazy" decoding="async" alt="Электрик в перчатках раскладывает провода групп в пустом корпусе щита, рядом сумка с инструментом">
+          <span class="work-cap"><b>Сборка щита</b><span>Раскладываем жилы по группам перед подключением</span></span>
+        </button>
+      </li>
+      <li class="work rv" style="--i:3">
+        <button class="work-btn" type="button" data-full="photos/shchit-12-1080.webp" data-w="1080" data-h="1920" aria-label="Открыть фото: Щит на 11 групп">
+          <img src="photos/shchit-12-560.webp" width="560" height="996" loading="lazy" decoding="async" alt="Щит в стене из газоблока: дифавтомат и 11 автоматов, шины N и PE, кабели в штробах сверху и снизу">
+          <span class="work-cap"><b>Щит на 11 групп</b><span>Дифавтомат 30 мА, кабели аккуратно заходят по штробам</span></span>
+        </button>
+      </li>
+      <li class="work rv" style="--i:4">
+        <button class="work-btn" type="button" data-full="photos/vvod-1080.webp" data-w="1080" data-h="1920" aria-label="Открыть фото: Ввод линий в щит">
+          <img src="photos/vvod-560.webp" width="560" height="996" loading="lazy" decoding="async" alt="Корпус щита в стене, сверху по штробе заходят кабели всех групп">
+          <span class="work-cap"><b>Ввод линий в щит</b><span>Все кабели групп заходят сверху по одной штробе</span></span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<dialog class="lb" id="lb" aria-label="Фото работы">
+  <button class="lb-close" type="button" aria-label="Закрыть">×</button>
+  <button class="lb-nav lb-prev" type="button" aria-label="Предыдущее фото">‹</button>
+  <figure class="lb-fig"><img class="lb-img" alt=""><figcaption class="lb-cap"></figcaption></figure>
+  <button class="lb-nav lb-next" type="button" aria-label="Следующее фото">›</button>
+</dialog>
+
 <section class="band schema" id="shema">
   <div class="wrap">
     <div class="section-head rv">
@@ -971,6 +1060,31 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
   if (hs && hs.pauseAnimations) {
     if (reduce) { hs.pauseAnimations(); try { hs.setCurrentTime(8); } catch (e) {} }
     else if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) hs.unpauseAnimations(); else hs.pauseAnimations(); }); }).observe(hero);
+  }
+
+  /* ---------- Works: full-screen photo viewer ---------- */
+  var lb = document.getElementById('lb');
+  if (lb && lb.showModal) {
+    var works = [].slice.call(document.querySelectorAll('.work-btn')), cur = 0;
+    var lbImg = lb.querySelector('.lb-img'), lbCap = lb.querySelector('.lb-cap');
+    function showWork(i) {
+      cur = (i + works.length) % works.length;
+      var b = works[cur], thumb = b.querySelector('img'), full = b.getAttribute('data-full'), want = cur;
+      lbImg.width = +b.getAttribute('data-w'); lbImg.height = +b.getAttribute('data-h');
+      lbImg.alt = thumb.alt; lbImg.src = thumb.currentSrc || thumb.src;
+      lbCap.innerHTML = b.querySelector('.work-cap').innerHTML;
+      var big = new Image(); big.onload = function () { if (want === cur && lb.open) lbImg.src = full; }; big.src = full;
+    }
+    works.forEach(function (b, i) { b.addEventListener('click', function () { showWork(i); lb.showModal(); document.body.classList.add('lb-open'); }); });
+    lb.querySelector('.lb-prev').addEventListener('click', function () { showWork(cur - 1); });
+    lb.querySelector('.lb-next').addEventListener('click', function () { showWork(cur + 1); });
+    lb.querySelector('.lb-close').addEventListener('click', function () { lb.close(); });
+    lb.addEventListener('close', function () { document.body.classList.remove('lb-open'); works[cur].focus({ preventScroll: true }); });
+    lb.addEventListener('click', function (e) { if (e.target === lb || e.target.classList.contains('lb-fig')) lb.close(); });
+    lb.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') showWork(cur - 1); else if (e.key === 'ArrowRight') showWork(cur + 1); });
+    var sx = null;
+    lb.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', function (e) { if (sx === null) return; var dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 50) showWork(cur + (dx < 0 ? 1 : -1)); sx = null; });
   }
 
   /* ---------- In-page links: scroll to the section, keep the address clean (no #) ---------- */
